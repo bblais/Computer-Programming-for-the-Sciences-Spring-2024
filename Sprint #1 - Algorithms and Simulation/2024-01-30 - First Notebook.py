@@ -118,17 +118,153 @@ for value in range(10):
 print(S)
 
 
+# In[18]:
+
+
+S=0
+for value in range(10):
+    S=S+value
+
+print(S)
+
+
 # In[17]:
 
 
 0+1+2+3+4+5+6+7+8+9
 
 
-# In[ ]:
+# ### Wrong way #1
+
+# In[19]:
 
 
 N=15
 
 # rest of this I want at the end to print out the factorial of N
+
+total=0
+for value in range(N):
+    total=total*value
+
+print(total) 
+
+
+# the range(N) goes from 0 to N-1
+
+# ### Wrong way #2 
+
+# In[20]:
+
+
+N=15
+
+# rest of this I want at the end to print out the factorial of N
+
+total=0
+for value in range(1,N+1):
+    print(value)
+    total=total*value
+
+print(total) 
+
+
+# In[21]:
+
+
+N=15
+
+# rest of this I want at the end to print out the factorial of N
+
+total=0
+for value in range(N):
+    print(value)
+    total=total*(value+1)
+
+print(total) 
+
+
+# ### hopefully correct
+
+# In[23]:
+
+
+N=15
+
+# rest of this I want at the end to print out the factorial of N
+
+total=1
+for value in range(N):
+    total=total*(value+1)
+
+print(total) 
+
+
+# In[24]:
+
+
+def factorial(N):
+    total=1
+    for value in range(N):
+        total=total*(value+1)
+
+    return total
+
+
+# In[25]:
+
+
+a=factorial(5)
+
+
+# In[26]:
+
+
+print(a)
+
+
+# Our friend Pythagoras:
+# 
+# $$
+# a^2 + b^2 = c^2
+# $$
+# 
+# which means
+# 
+# $$
+# c=\sqrt{a^2 + b^2}
+# $$
+
+# In[27]:
+
+
+a=5
+b=8
+c=sqrt(a**2+b**2)
+
+
+# In[28]:
+
+
+from numpy import sqrt
+
+
+# In[29]:
+
+
+a=5
+b=8
+c=sqrt(a**2+b**2)
+
+
+# In[30]:
+
+
+print(c)
+
+
+# In[ ]:
+
+
 
 
