@@ -1,9 +1,28 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# ## Outline for taking a derivative numerically
+# 
+# 
+# 1. define a function (def statement)
+# 2. specify start value for x and an end value for x
+# 3. start a Storage for calculated values
+# 4. set x value to the start value
+# 5. calculate the slope at that value (rise/run) = (f(x+dx)-f(x))/dx
+# 6. add the calculated values to the Storage
+# 7. step the x value by small step called dx
+# 8. repeat until x value is after the end value
+# 9. at the end, plot the Stored values
+
+# In[1]:
 
 
-
-%matplotlib inline
+get_ipython().run_line_magic('matplotlib', 'inline')
 from pylab import *
 from sci378 import *
+
+
+# In[2]:
 
 
 def f(x):
@@ -11,18 +30,26 @@ def f(x):
     return 4*x**3-2*x**2
 
 
+# In[10]:
+
+
 x_start=-2
 x_end=2
 dx=0.1
 
 
+# ## plot the function 
 
+# In[12]:
 
 
 x=linspace(x_start,x_end,500)
 y=f(x)
 plot(x,y)
 ylim([-1,1])
+
+
+# In[15]:
 
 
 x=x_start
@@ -45,7 +72,13 @@ x,slope=S.arrays()
 x
 
 
+# In[16]:
+
+
 slope
+
+
+# In[18]:
 
 
 plot(x,slope)
@@ -54,7 +87,9 @@ slope_expected=12*x**2-4*x
 plot(x,slope_expected,'r--')
 
 
+# redo with smaller step size dx
 
+# In[19]:
 
 
 x_start=-2
@@ -83,6 +118,9 @@ plot(x,slope)
 
 slope_expected=12*x**2-4*x
 plot(x,slope_expected,'r--')
+
+
+# In[21]:
 
 
 x_start=-2
@@ -110,6 +148,7 @@ while x<=x_end:
 x,slope,area=S.arrays()
 
 
+# In[22]:
 
 
 plot(x,slope)
@@ -118,11 +157,17 @@ slope_expected=12*x**2-4*x
 plot(x,slope_expected,'r--')
 
 
+# In[23]:
+
 
 plot(x,area)
 
 area_expected=x**4-2*x**3/3
 plot(x,area_expected,'r--')
+
+
+# In[ ]:
+
 
 
 
