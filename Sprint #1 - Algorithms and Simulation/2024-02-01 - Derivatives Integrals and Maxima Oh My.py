@@ -148,6 +148,8 @@ while x<=x_end:
 x,slope,area=S.arrays()
 
 
+# derivative is fine
+
 # In[22]:
 
 
@@ -157,12 +159,67 @@ slope_expected=12*x**2-4*x
 plot(x,slope_expected,'r--')
 
 
+# integral is way wrong
+
 # In[23]:
 
 
 plot(x,area)
 
 area_expected=x**4-2*x**3/3
+plot(x,area_expected,'r--')
+
+
+# fixing the integral
+
+# In[24]:
+
+
+x_start=-2
+x_end=2
+dx=0.01
+
+x=x_start
+S=Storage()
+area=0
+while x<=x_end:
+
+    # calculate the area at that value
+    # add the calculated values to the Storage
+    #step the x value by small step called dx
+
+    slope=(f(x+dx)-f(x))/dx
+    area_rectangle=f(x)*dx
+    area_triangle=1/2*dx*(f(x+dx)-f(x))
+    area=area+area_rectangle+area_triangle
+    
+    S+=x,slope,area
+    
+    x=x+dx
+
+    
+x,slope,area=S.arrays()
+
+
+# off by a constant
+
+# In[25]:
+
+
+plot(x,area)
+
+area_expected=x**4-2*x**3/3
+plot(x,area_expected,'r--')
+
+
+# yay!
+
+# In[26]:
+
+
+plot(x,area)
+
+area_expected=x**4-2*x**3/3-(x_start**4-2*x_start**3/3)
 plot(x,area_expected,'r--')
 
 
