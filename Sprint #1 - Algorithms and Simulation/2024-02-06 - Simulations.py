@@ -22,7 +22,7 @@ from sci378 import *  # be lazy about all the functions for the class
 
 # ## Set the parameters
 
-# In[2]:
+# In[15]:
 
 
 a=0.0083
@@ -30,7 +30,7 @@ a=0.0083
 
 # ## Set the initial variables
 
-# In[3]:
+# In[16]:
 
 
 p=7e9
@@ -38,7 +38,7 @@ p=7e9
 
 # ## Set the simulation parameters
 
-# In[4]:
+# In[17]:
 
 
 dt=0.1
@@ -46,13 +46,13 @@ dt=0.1
 
 # ## Set initial time
 
-# In[5]:
+# In[18]:
 
 
 t=0
 
 
-# In[6]:
+# In[19]:
 
 
 S=Storage()  # set up a storage to keep track of the calculations
@@ -72,10 +72,102 @@ while t<10:
 t,p=S.arrays()  # get the stored values as arrays so we can plot, etc...
 
 
-# In[7]:
+# In[20]:
+
+
+figure(figsize=(6,3))
+plot(t,p);
+
+
+# In[10]:
+
+
+
+
+
+# In[23]:
+
+
+a=0.0083
+p=7e9
+t=0
+dt=0.1
+
+S=Storage()  # set up a storage to keep track of the calculations
+
+S+=t,p  #  add the starting values to the storage
+while t<10:
+
+    # apply the model equations
+    dp=a*p   # small change in p
+
+    # update the variables and time
+    p=p+dp
+    t=t+dt
+
+    S+=t,p  #  add the updated values to the storage
+
+t,p=S.arrays()  # get the stored values as arrays so we can plot, etc...
+
+
+# In[24]:
 
 
 plot(t,p)
+
+
+# ## throwing a ball in the air
+
+# In[29]:
+
+
+# parameters
+g=10
+
+# initial variables
+v=5
+y=1.5
+
+# time
+t=0
+dt=0.01
+
+
+S=Storage()  # set up a storage to keep track of the calculations
+
+S+=t,y,v  #  add the starting values to the storage
+while t<2:
+
+    # apply the model equations -- one for each variable
+    dy=v*dt    #  dy/dt=v
+    dv=-g*dt   #  dv/dt=-g
+
+    # update the variables and time
+    y=y+dy
+    v=v+dv
+    t=t+dt
+
+    S+=t,y,v  #  add the updated values to the storage
+
+t,y,v=S.arrays()  # get the stored values as arrays so we can plot, etc...
+
+
+# In[30]:
+
+
+figure(figsize=(6,3))
+plot(t,y);
+xlabel('time')
+ylabel('height')
+
+
+# In[31]:
+
+
+figure(figsize=(6,3))
+plot(t,v);
+xlabel('time')
+ylabel('speed')
 
 
 # In[ ]:
