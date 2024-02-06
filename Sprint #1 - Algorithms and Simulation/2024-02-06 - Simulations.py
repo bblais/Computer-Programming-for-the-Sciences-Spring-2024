@@ -170,6 +170,98 @@ xlabel('time')
 ylabel('speed')
 
 
+# ## Parameter exploration - take 1
+
+# In[33]:
+
+
+figure(figsize=(6,3))  # you don't need this -- only for class
+
+a=0.0083
+p=7e9
+t=0
+dt=0.1
+
+S=Storage()  # set up a storage to keep track of the calculations
+
+S+=t,p  #  add the starting values to the storage
+while t<10:
+
+    # apply the model equations
+    dp=a*p   # small change in p
+
+    # update the variables and time
+    p=p+dp
+    t=t+dt
+
+    S+=t,p  #  add the updated values to the storage
+
+t,p=S.arrays()  # get the stored values as arrays so we can plot, etc...
+
+plot(t,p)
+
+
+a=0.01
+p=7e9
+t=0
+dt=0.1
+
+S=Storage()  # set up a storage to keep track of the calculations
+
+S+=t,p  #  add the starting values to the storage
+while t<10:
+
+    # apply the model equations
+    dp=a*p   # small change in p
+
+    # update the variables and time
+    p=p+dp
+    t=t+dt
+
+    S+=t,p  #  add the updated values to the storage
+
+t,p=S.arrays()  # get the stored values as arrays so we can plot, etc...
+
+plot(t,p)
+
+
+# ## parameter exploration -- take two -- use a loop
+
+# In[35]:
+
+
+figure(figsize=(6,3))  # you don't need this -- only for class
+
+
+
+for a in [0.008, 0.01, 0.02]:
+
+    #a=0.01
+    p=7e9
+    t=0
+    dt=0.1
+    
+    S=Storage()  # set up a storage to keep track of the calculations
+    
+    S+=t,p  #  add the starting values to the storage
+    while t<10:
+    
+        # apply the model equations
+        dp=a*p   # small change in p
+    
+        # update the variables and time
+        p=p+dp
+        t=t+dt
+    
+        S+=t,p  #  add the updated values to the storage
+    
+    t,p=S.arrays()  # get the stored values as arrays so we can plot, etc...
+    
+    plot(t,p,label=f"a={a}")
+
+legend()
+
+
 # In[ ]:
 
 
