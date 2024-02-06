@@ -14,7 +14,7 @@
 # 8. repeat until x value is after the end value
 # 9. at the end, plot the Stored values
 
-# In[1]:
+# In[27]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -22,7 +22,26 @@ from pylab import *
 from sci378 import *
 
 
-# In[2]:
+# In[28]:
+
+
+import pylab
+pylab.__file__
+
+
+# In[29]:
+
+
+import sci378
+
+
+# In[30]:
+
+
+sci378.__file__
+
+
+# In[31]:
 
 
 def f(x):
@@ -30,30 +49,50 @@ def f(x):
     return 4*x**3-2*x**2
 
 
-# In[3]:
+# In[32]:
+
+
+def f(x):
+    return sin(x)
+
+
+# In[33]:
 
 
 x_start=-2
-x_end=2
+x_end=4
 dx=0.1
 
 
 # ## plot the function 
 
-# In[4]:
+# In[34]:
+
+
+x=linspace(x_start,x_end,5)  # linspace spits out list of values.  the number of values is the last one (5 in this case)
+x
+
+
+# In[35]:
+
+
+y=f(x)
+y
+
+
+# In[36]:
 
 
 x=linspace(x_start,x_end,500)
 y=f(x)
-plot(x,y)
-ylim([-1,1])
+plot(x,y,'-')
+#ylim([-1,1])
 
 
-# In[5]:
+# In[37]:
 
 
 x=x_start
-print(x)
 S=Storage()
 while x<=x_end:
 
@@ -72,18 +111,19 @@ x,slope=S.arrays()
 x
 
 
-# In[6]:
+# In[38]:
 
 
 slope
 
 
-# In[7]:
+# In[39]:
 
 
 plot(x,slope)
 
 slope_expected=12*x**2-4*x
+slope_expected=cos(x)
 plot(x,slope_expected,'r--')
 
 
