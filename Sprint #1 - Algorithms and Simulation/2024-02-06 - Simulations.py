@@ -200,6 +200,7 @@ t,p=S.arrays()  # get the stored values as arrays so we can plot, etc...
 
 plot(t,p)
 
+#================================================================
 
 a=0.01
 p=7e9

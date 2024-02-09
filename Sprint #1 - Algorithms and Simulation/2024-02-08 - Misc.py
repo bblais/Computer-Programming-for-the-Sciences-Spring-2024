@@ -65,6 +65,26 @@ for a in [1,2,3,4]:
     plot(θ,y)
 
 
+# In[12]:
+
+
+alpha=5
+
+
+# In[ ]:
+
+
+α
+
+
+# In[13]:
+
+
+# \theta  # hit tab
+
+θ=5
+
+
 # In[ ]:
 
 
