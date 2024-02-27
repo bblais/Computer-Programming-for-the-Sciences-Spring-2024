@@ -71,6 +71,48 @@ xlabel('time')
 ylabel('population')
 
 
+# In[10]:
+
+
+sim=Simulation()
+sim.add("p' = r*p*(1-p/K)",initial_value=1)
+sim.params(r=1,K=250)
+sim.run(50)
+
+plot(sim.t,sim.y)
+plot(t_data,y_data,'-o')
+xlabel('time')
+ylabel('population')
+
+
+# $$
+# \frac{dy}{dt}=ry(1-y/K)
+# $$
+
+# In[11]:
+
+
+sim=Simulation()
+sim.add("p' = r*p*(1-p/K)",initial_value=1)
+sim.params(r=1,K=250)
+sim.run(50)
+
+plot(sim.t,sim.p)
+plot(t_data,y_data,'-o')
+xlabel('time')
+ylabel('population')
+
+
+# In[13]:
+
+
+sim=Simulation()
+sim.add("p' = r*p*(1-p/K)",initial_value=1,plot=True)
+sim.params(r=1,K=250)
+sim.add_data(t=t_data,p=y_data,plot=True)
+sim.run(50)
+
+
 # In[ ]:
 
 
