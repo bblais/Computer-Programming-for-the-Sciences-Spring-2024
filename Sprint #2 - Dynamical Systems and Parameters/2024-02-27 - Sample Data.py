@@ -144,7 +144,7 @@ plot(sim.t,sim.y,'--')
 text(10,46,'Fixed point #2: $y=K$')
 
 
-# In[33]:
+# In[39]:
 
 
 sim=Simulation()
@@ -195,6 +195,9 @@ sim.add("y' = r*y*(1-y/K)",initial_value=-3)  # below first fixed point
 sim.params(r=1,K=50)
 sim.run(2)
 plot(sim.t,sim.y,'r:')
+
+text(1,51,'Stable fixed point #2',fontsize=10,weight='bold',color='g')
+text(1,-5,'Unstable fixed point #1',fontsize=10,weight='bold',color='r')
 
 
 # In[ ]:
