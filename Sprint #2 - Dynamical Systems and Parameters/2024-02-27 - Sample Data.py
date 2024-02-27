@@ -113,6 +113,90 @@ sim.add_data(t=t_data,p=y_data,plot=True)
 sim.run(50)
 
 
+# ## Fixed point plot for logistic growth
+
+# In[24]:
+
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=1)
+sim.params(r=1,K=50)
+sim.run(50)
+
+plot(sim.t,sim.y,linewidth=3)
+xlabel('time')
+ylabel('population')
+
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=0)  # first fixed point
+sim.params(r=1,K=50)
+sim.run(50)
+plot(sim.t,sim.y,'--')
+
+text(10,1,'Fixed point #1: $y=0$')
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=50)  # second fixed point
+sim.params(r=1,K=50)
+sim.run(50)
+plot(sim.t,sim.y,'--')
+text(10,46,'Fixed point #2: $y=K$')
+
+
+# In[33]:
+
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=1)
+sim.params(r=1,K=50)
+sim.run(50)
+
+plot(sim.t,sim.y,linewidth=3)
+xlabel('time')
+ylabel('population')
+
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=0)  # first fixed point
+sim.params(r=1,K=50)
+sim.run(50)
+plot(sim.t,sim.y,'r--')
+
+text(10,1,'Fixed point #1: $y=0$')
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=50)  # second fixed point
+sim.params(r=1,K=50)
+sim.run(50)
+plot(sim.t,sim.y,'g--')
+text(10,46,'Fixed point #2: $y=K$')
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=53)  # above second fixed point 
+sim.params(r=1,K=50)
+sim.run(50)
+plot(sim.t,sim.y,'g:')
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=47)  # below second fixed point 
+sim.params(r=1,K=50)
+sim.run(50)
+plot(sim.t,sim.y,'g:')
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=3)  # above first fixed point 
+sim.params(r=1,K=50)
+sim.run(50)
+plot(sim.t,sim.y,'r:')
+
+sim=Simulation()
+sim.add("y' = r*y*(1-y/K)",initial_value=-3)  # below first fixed point 
+sim.params(r=1,K=50)
+sim.run(2)
+plot(sim.t,sim.y,'r:')
+
+
 # In[ ]:
 
 
