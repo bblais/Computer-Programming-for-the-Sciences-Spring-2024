@@ -53,9 +53,13 @@ grid()
 
 # ## Harmonic Oscillator
 # 
-# When comparing data to the harmonic oscillator, best to always compare to the $x$ variable.  Sometimes the data starts low and goes high.  Sometimes it starts high and goes low.  Set $x0$ to the mean value of the data, adjust $k$ for the number of bumps per time period (higher $k$ = more bumps). Adjust the initial conditions to deal with the high to low or low to high start.  
+# When comparing data to the harmonic oscillator, best to always compare to the $x$ variable.  Sometimes the data starts low and goes high.  Sometimes it starts high and goes low.  
+# 
+# - Set $x0$ to the mean value of the data
+# - adjust $k$ for the number of bumps per time period (higher $k$ = more bumps). 
+# - Adjust the initial conditions to deal with the high to low or low to high start.  
 
-# In[22]:
+# In[37]:
 
 
 t_data=linspace(0,10,100)
@@ -63,12 +67,12 @@ y_data=10*sin(3*t_data)+20
 plot(t_data,y_data,'-o')
 
 
-# In[33]:
+# In[44]:
 
 
 sim=Simulation()
 sim.add("x'=v",initial_value=20,plot=True)
-sim.add("v'=-k*(x-x0)",initial_value=30)
+sim.add("v'=-k*(x-x0)",initial_value=20)
 sim.params(k=9,x0=20)
 sim.add_data(t=t_data,x=y_data,plot=True)
 sim.run(10)
@@ -82,11 +86,11 @@ y_data=10*cos(3*t_data)+20
 plot(t_data,y_data,'-o')
 
 
-# In[36]:
+# In[45]:
 
 
 sim=Simulation()
-sim.add("x'=v",initial_value=30,plot=True)
+sim.add("x'=v",initial_value=29,plot=True)
 sim.add("v'=-k*(x-x0)",initial_value=0)
 sim.params(k=9,x0=20)
 sim.add_data(t=t_data,x=y_data,plot=True)
