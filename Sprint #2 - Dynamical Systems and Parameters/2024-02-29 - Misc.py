@@ -97,6 +97,21 @@ sim.add_data(t=t_data,x=y_data,plot=True)
 sim.run(10)
 
 
+# In[48]:
+
+
+t_data=linspace(0,10,100)
+y_data=10*sin(3*t_data)+20
+plot(t_data,y_data,'-o',label='Sine')
+
+
+t_data=linspace(0,10,100)
+y_data=10*cos(3*t_data)+20
+plot(t_data,y_data,'-o',label='Cosine')
+
+legend()
+
+
 # In[ ]:
 
 
