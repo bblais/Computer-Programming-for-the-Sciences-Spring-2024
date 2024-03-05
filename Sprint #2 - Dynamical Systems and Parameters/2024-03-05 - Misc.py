@@ -39,6 +39,12 @@ sim.functions(a)
 sim.run(10)
 
 
+# In[17]:
+
+
+import pandas as pd
+
+
 # In[ ]:
 
 
