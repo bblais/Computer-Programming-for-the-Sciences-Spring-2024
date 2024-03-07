@@ -19,7 +19,7 @@ y_data=data['y'].values/8
 plot(t_data,y_data,'o')
 
 
-# In[27]:
+# In[30]:
 
 
 r=.4
@@ -40,14 +40,14 @@ sim.params(r=r,K=50)
 sim.run(50)
 plot(sim.t,sim.y,'r--')
 
-text(10,1,'Fixed point #1: $y=0$')
+#text(10,1,'Fixed point #1: $y=0$')
 
 sim=Simulation()
 sim.add("y' = r*y*(1-y/K)",initial_value=50)  # second fixed point
 sim.params(r=r,K=50)
 sim.run(50)
 plot(sim.t,sim.y,'g--')
-text(10,46,'Fixed point #2: $y=K$')
+#text(20,35,'Fixed point #2: $y=K$')
 
 sim=Simulation()
 sim.add("y' = r*y*(1-y/K)",initial_value=53)  # above second fixed point 
