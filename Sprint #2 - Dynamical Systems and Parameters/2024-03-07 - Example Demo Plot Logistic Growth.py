@@ -77,6 +77,37 @@ text(3,51,'Stable fixed point #2',fontsize=10,weight='bold',color='g')
 text(3,-5,'Unstable fixed point #1',fontsize=10,weight='bold',color='r')
 
 
+# In[32]:
+
+
+sim=Simulation()
+sim.figsize=(10,5)
+sim.add("y' = r*y*(1-y/K)",initial_value=1,plot=True)
+sim.params(r=r,K=50)
+sim.add_data(t=t_data,y=y_data,plot=True)
+sim.run(50)
+
+
+# In[33]:
+
+
+sim=Simulation()
+sim.figsize=(10,5)
+sim.add("y' = r*y*(1-y/K)",initial_value=1,plot=False)
+sim.params(r=r,K=50)
+sim.add_data(t=t_data,y=y_data,plot=False)
+sim.run(50)
+
+
+# In[36]:
+
+
+plot(sim.t,sim.y,'b-')
+plot(t_data,y_data,'bo')
+xlabel('time')
+ylabel('population')
+
+
 # In[ ]:
 
 
