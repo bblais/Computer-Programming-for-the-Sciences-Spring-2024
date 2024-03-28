@@ -57,13 +57,7 @@ def loglikelihood(data,μ1,σ1,μ2,σ2,ν):
 # In[ ]:
 
 
-model=MCMCModel((group_a,group_b),loglikelihood,logprior,
-               μ1=Normal(10,10),    # initial guess for μ1
-               σ1=Uniform(0,10),    # initial guess for σ1 (make sure it's positive)
-               μ2=Normal(10,10),    # initial guess for μ2
-               σ2=Uniform(0,10),    # initial guess for σ2 (make sure it's positive)
-               ν=Uniform(1,10),    # initial guess for ν (make sure it's greater than 1)
-               )
+model=MCMCModel((group_a,group_b),loglikelihood,logprior)
 
 
 # In[ ]:

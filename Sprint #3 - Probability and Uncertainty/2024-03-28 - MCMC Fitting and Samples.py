@@ -57,18 +57,13 @@ def loglikelihood(data,μ1,σ1,μ2,σ2):
 # In[ ]:
 
 
-model=MCMCModel((group_a,group_b),loglikelihood,logprior,
-               μ1=Normal(10,10),    # initial guess for μ1
-               σ1=Uniform(0,10),    # initial guess for σ1 (make sure it's positive)
-               μ2=Normal(10,10),    # initial guess for μ2
-               σ2=Uniform(0,10),    # initial guess for σ2 (make sure it's positive)
-               )
+model=MCMCModel((group_a,group_b),loglikelihood,logprior)
 
 
 # In[ ]:
 
 
-model.run_mcmc(400,repeat=3,verbose=True)
+model.run_mcmc(800,repeat=3,verbose=True)
 model.plot_chains()
 
 

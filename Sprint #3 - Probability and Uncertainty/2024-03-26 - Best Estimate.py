@@ -64,8 +64,7 @@ placebo = (99,101,100,101,102,100,97,101,104,101,102,102,100,105,88,101,100,
 
 
 x=drug
-model=MCMCModel(x,loglikelihood,logprior,
-               μ=Normal(10,10))   # initial guess for μ
+model=MCMCModel(x,loglikelihood,logprior)   # initial guess for μ
 
 
 # In[ ]:
@@ -113,9 +112,7 @@ def loglikelihood(data,μ,σ):
 
 
 x=drug
-model=MCMCModel(x,loglikelihood,logprior,
-               μ=Normal(10,10),    # initial guess for μ
-               σ=Uniform(0,10))   # initial guess for σ (make sure it's positive)
+model=MCMCModel(x,loglikelihood,logprior)   # initial guess for σ (make sure it's positive)
 
 
 # In[ ]:
@@ -172,12 +169,7 @@ def loglikelihood(data,μ1,σ1,μ2,σ2):
 # In[ ]:
 
 
-model=MCMCModel((drug,placebo),loglikelihood,logprior,
-               μ1=Normal(10,10),    # initial guess for μ1
-               σ1=Uniform(0,10),    # initial guess for σ1 (make sure it's positive)
-               μ2=Normal(10,10),    # initial guess for μ2
-               σ2=Uniform(0,10),    # initial guess for σ2 (make sure it's positive)
-               )
+model=MCMCModel((drug,placebo),loglikelihood,logprior)
 
 
 # In[ ]:
