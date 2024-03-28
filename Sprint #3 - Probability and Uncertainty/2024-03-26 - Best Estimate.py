@@ -9,6 +9,11 @@ from pylab import *
 from sci378.stats import *
 
 
+# `pip install "git+https://github.com/bblais/sci378" --upgrade`
+# 
+# 
+# `pip install pyndamics3 --upgrade`
+
 # ## Best Estimate, $\mu$, knowing $\sigma$
 
 # In[ ]:
