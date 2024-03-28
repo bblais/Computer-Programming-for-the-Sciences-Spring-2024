@@ -33,22 +33,23 @@ group_b=[158.51, 155.79, 159.58, 161.68, 155.75, 158.06,
 # In[ ]:
 
 
-def logprior(μ1,σ1,μ2,σ2):
+def logprior(μ1,σ1,μ2,σ2,ν):
     value=0
     
-    value+=logNormal(μ1,0,100)
+    value+=logNormal(μ1,0,100)  # wide prior on μ1
     value+=logJeffreys(σ1)
     value+=logNormal(μ2,0,100)
     value+=logJeffreys(σ2)
+    value+=logExponential(ν-1,29)  # large ν = Normal, small ν = outliery
     
     return value
 
-def loglikelihood(data,μ1,σ1,μ2,σ2):
+def loglikelihood(data,μ1,σ1,μ2,σ2,ν):
     x,y=data
     value=0
         
-    value+=logNormal(x-μ1,0,σ1)
-    value+=logNormal(y-μ2,0,σ2)
+    value+=logStudent_T(x-μ1,ν,0,σ1)
+    value+=logStudent_T(y-μ2,ν,0,σ2)
     
     return value
     
@@ -62,6 +63,7 @@ model=MCMCModel((group_a,group_b),loglikelihood,logprior,
                σ1=Uniform(0,10),    # initial guess for σ1 (make sure it's positive)
                μ2=Normal(10,10),    # initial guess for μ2
                σ2=Uniform(0,10),    # initial guess for σ2 (make sure it's positive)
+               ν=Uniform(1,10),    # initial guess for ν (make sure it's greater than 1)
                )
 
 
