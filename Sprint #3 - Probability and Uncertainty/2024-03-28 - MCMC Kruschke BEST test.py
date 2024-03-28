@@ -52,7 +52,6 @@ def loglikelihood(data,μ1,σ1,μ2,σ2,ν):
     value+=logStudent_T(y-μ2,ν,0,σ2)
     
     return value
-    
 
 
 # In[ ]:
