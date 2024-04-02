@@ -9,6 +9,12 @@ from pylab import *
 from sci378.stats import *
 
 
+# In[ ]:
+
+
+from pyndamics3 import Simulation
+
+
 # `pip install "git+https://github.com/bblais/sci378" --upgrade`
 # 
 # 
