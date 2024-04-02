@@ -46,7 +46,6 @@ def logprior(m,initial_y,σ):
     value=0. 
     
     value+=logNormal(m,0,10)
-    value+=logNormal(b,0,10)
     value+=logNormal(initial_y,0,10)
     value+=logJeffreys(σ)
     
@@ -70,6 +69,19 @@ model.plot_chains()
 
 
 model.plot_distributions()
+
+
+# In[ ]:
+
+
+get_ipython().run_line_magic('pinfo2', 'plot')
+
+
+# In[ ]:
+
+
+plot(rand(10),'-o',color='orange')
+plot(rand(10),'-o',color='#34495e')
 
 
 # In[ ]:
