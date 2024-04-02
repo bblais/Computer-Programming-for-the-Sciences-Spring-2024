@@ -43,8 +43,8 @@ sim.run(1250)
 def logprior(a,K,initial_y,σ):
     value=0. 
     
-    value+=logUniform(a,0,30)
-    value+=logUniform(K,0,1000)
+    value+=logUniform(a,0,1)
+    value+=logUniform(K,0,200)
     value+=logUniform(initial_y,0,10)
     value+=logJeffreys(σ)
     
@@ -65,7 +65,7 @@ model=MCMCModel(sim,loglikelihood,logprior)
 # In[ ]:
 
 
-model.run_mcmc(400,repeat=2,verbose=True)
+model.run_mcmc(400,repeat=3,verbose=True)
 model.plot_chains()
 
 
