@@ -103,6 +103,75 @@ model.plot_distributions()
 # In[ ]:
 
 
+import matplotlib.pyplot as py
+
+
+# In[ ]:
+
+
+model.sim
+
+
+# In[ ]:
+
+
+def plot_many(model,variables,t_min=0,t_max=90,N=300,alpha=0.1):
+    if isinstance(variables,str):
+        variables=[variables]
+    sim=model.sim
+
+    samples=model.get_samples()
+    sim.noplots=True  # turn off the simulation plots
+    for i in range(N):
+
+        L=samples.shape[0]
+        single_sample=samples[np.random.randint(L),:]
+        p={}
+        for k,key in enumerate(model.keys):
+            p[key]=single_sample[k]    
+
+        sim.params(**p)
+        sim.run(t_min,t_max)
+
+        for num,p in enumerate(variables):
+            t=sim.t
+            v=sim[p]
+            py.figure(num+1)
+            py.plot(t,v,'g-',alpha=alpha)
+
+    median_values=model.percentiles(50)                
+    sim.params(**median_values)
+    sim.run(t_min,t_max)
+    for num,p in enumerate(variables):
+        t=sim.t
+        v=sim[p]
+        py.figure(num+1)
+        py.plot(t,v,'b-')
+
+    sim.noplots=False  # gotta love a double-negative
+    for num,p in enumerate(variables):
+        py.figure(num+1)
+        c=sim.get_component(p)
+        py.ylabel(c.label)
+        py.xlabel('time')
+        if not c.data:
+            continue
+        t=c.data['t']
+        v=c.data['value']
+        py.plot(t,v,'bo')  
+
+
+# In[ ]:
+
+
+plot_many(model,'y',t_min=0,t_max=90,N=300)
+
+
+# ## Just for debugging, do the same but don't fit the initial value
+
+# In[ ]:
+
+
 def logprior(a,K,σ):
     value=0. 
     
