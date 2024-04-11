@@ -8,8 +8,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 from pylab import *
 from sci378 import *
 
-from lmfit import *
-
 
 # ## Make up some data to work with
 
