@@ -139,7 +139,60 @@ df
 # In[ ]:
 
 
-plot(df.t,df.y,'o')
+x_data=df.t.values
+y_data=df.y.values
+
+
+# In[ ]:
+
+
+result=gauss_model.fit(y_data,x=x_data)
+result
+
+
+# In[ ]:
+
+
+result.best_values
+
+
+# In[ ]:
+
+
+A=result.best_values['amplitude']
+μ=result.best_values['center']
+σ=result.best_values['sigma']
+
+
+xx=linspace(min(x_data),max(x_data),100)  # theoretical x values
+yy=result.eval(x=xx)
+plot(x_data,y_data,'o')
+plot(xx,yy,'g-')
+
+yl=ylim()
+
+vlines(μ,yl[0],yl[1],ls='--',color='red')
+vlines(μ-σ,yl[0],yl[1],ls=':',color='orange')
+vlines(μ+σ,yl[0],yl[1],ls=':',color='orange')
+hlines(A/sqrt(2*pi)/σ,xx[0],xx[-1],ls='--',color='red')
+
+
+# In[ ]:
+
+
+max(y_data)
+
+
+# In[ ]:
+
+
+A
+
+
+# In[ ]:
+
+
+plot(x_data,y_data,'o')
 
 
 # In[ ]:
