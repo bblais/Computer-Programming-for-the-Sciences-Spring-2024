@@ -123,17 +123,26 @@ result
 # In[ ]:
 
 
-from lmfit.models import GaussianModel
-
-gauss_model=GaussianModel()
-gauss_model.param_names
+df=pd.read_csv("data/peaks/sample0.csv")
+df
 
 
 # In[ ]:
 
 
-df=pd.read_csv("data/peaks/sample0.csv")
-df
+x_data=df.t.values
+y_data=df.y.values
+
+plot(x_data,y_data,'o')
+
+
+# In[ ]:
+
+
+from lmfit.models import GaussianModel
+
+gauss_model=GaussianModel()
+gauss_model.param_names
 
 
 # In[ ]:
@@ -211,6 +220,91 @@ y=df.metANN
 t=t.values[y<500]
 y=y.values[y<500]
 plot(t,y,'-o')
+
+
+# In[ ]:
+
+
+from lmfit.models import LinearModel
+
+
+# In[ ]:
+
+
+mymodel=LinearModel()
+result=mymodel.fit(y,x=t)
+result
+
+
+# In[ ]:
+
+
+plot(t,y,'-o')
+
+tt=linspace(min(t),max(t),100)
+yy=result.eval(x=tt)
+plot(tt,yy,'r-')
+
+
+text(min(t)+5,max(y)-.1,
+     f"$y={result.params['slope'].value:.4f}x+{result.params['intercept'].value:.4f}$")
+
+
+# In[ ]:
+
+
+def get_temperature_time_slope(filename,plotit=False):
+    from lmfit.models import LinearModel
+    
+    df=pd.read_csv(filename)
+    t=df.YEAR
+    y=df.metANN
+
+    t=t.values[y<500]
+    y=y.values[y<500]    
+    
+    if plotit:
+        plot(t,y,'-o')
+        
+    mymodel=LinearModel()
+    result=mymodel.fit(y,x=t)  
+    
+    return result.best_values['slope']
+
+
+# In[ ]:
+
+
+get_temperature_time_slope('data/crichton/logan airport.csv')
+
+
+# In[ ]:
+
+
+from glob import glob
+
+
+# In[ ]:
+
+
+filenames=glob('data/crichton/logan*.csv')
+filenames
+
+
+# In[ ]:
+
+
+slopes=[get_temperature_time_slope(filename) for filename in filenames]
+slopes
+
+
+# In[ ]:
+
+
+slope_data={}
+for filename in filenames:
+    slope_data[filename]=get_temperature_time_slope(filename)
+slope_data
 
 
 # In[ ]:
